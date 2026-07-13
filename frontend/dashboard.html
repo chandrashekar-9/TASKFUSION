@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFusion Pro Dashboard</title>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+    <link rel="stylesheet" href="dashboard.css" />
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">
+            <span data-feather="grid" class="logo-icon"></span>
+            <span class="logo-text">TaskFusion</span>
+        </div>
+
+        <nav class="premium-nav">
+            <div class="nav-title">Navigation</div>
+            <a href="dashboard.html" class="nav-item active">
+                <i data-feather="home"></i> Dashboard
+            </a>
+            <a href="ai-task-center.html" class="nav-item">
+                <i data-feather="zap"></i> AI Task Center
+            </a>
+            <a href="settings.html" class="nav-item">
+                <i data-feather="settings"></i> Settings
+            </a>
+        </nav>
+
+        <div class="profile-section">
+
+            <button class="logoutBtn" onclick="logout()">
+                <i data-feather="log-out"></i> Logout
+            </button>
+        </div>
+
+        <div class="task-history-section">
+            <div class="history-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 class="history-title" style="margin-bottom: 0;">Recent Task History</h3>
+            </div>
+            <div id="historyList">
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+
+        <div class="header">Welcome back</div>
+        <p class="header-subtext">Manage your premium AI tasks and productivity metrics.</p>
+
+        <div class="dashboard-layout">
+            <div class="left-panel">
+                <div class="card task-card">
+                    <h3 class="card-title">Create New AI Task</h3>
+                    <textarea id="promptInput" placeholder="Type your high-priority prompt..."></textarea>
+
+                    <button class="submit-btn" id="submitBtn">
+                        <i data-feather="chevrons-right"></i> Run Task
+                    </button>
+
+                    <div class="status" id="statusText">Ready to run.</div>
+                    <div class="task-output" id="taskOutput"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3>Delete Task?</h3>
+            <p>Are you sure you want to delete this task? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="cancelDeleteBtn" class="modal-btn secondary">Cancel</button>
+                <button id="confirmDeleteBtn" class="modal-btn danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+    </script>
+</body>
+
+</html>
